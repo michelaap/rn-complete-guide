@@ -22,37 +22,40 @@ const GameOverScreen = props => {
         <View style={styles.imageContainer}>
           <Image
             source={require('../assets/success.png')}
-            // source={{ uri: 'https://cdn.pixabay.com/photo/2016/05/05/23/52/mountain-summit-1375015_1280.jpg' }}
+            // source={{
+            //   uri:
+            //     'https://cdn.pixabay.com/photo/2016/05/05/23/52/mountain-summit-1375015_960_720.jpg'
+            // }}
             style={styles.image}
-            resizeMode='cover'
+            resizeMode="cover"
           />
         </View>
-        <View style={styles.resultContiner}>
+        <View style={styles.resultContainer}>
           <BodyText style={styles.resultText}>
-            Your phone needed 
-            <Text style={styles.highlight}>{props.roundsNumber}</Text>
-            rounds to guess the number 
-            <Text style={styles.highlight}>{props.userNumber}</Text>
+            Your phone needed{' '}
+            <Text style={styles.highlight}>{props.roundsNumber}</Text> rounds to
+            guess the number{' '}
+            <Text style={styles.highlight}>{props.userNumber}</Text>.
           </BodyText>
         </View>
-        <MainButton onPress={props.onRestart}>
-          NEW GAME
-        </MainButton>
+
+        <MainButton onPress={props.onRestart}>NEW GAME</MainButton>
       </View>
     </ScrollView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    paddingVertical: 10
   },
   imageContainer: {
     width: Dimensions.get('window').width * 0.7,
     height: Dimensions.get('window').width * 0.7,
-    borderRadius: Dimensions.get('window').width * 0.7 / 2,
+    borderRadius: (Dimensions.get('window').width * 0.7) / 2,
     borderWidth: 3,
     borderColor: 'black',
     overflow: 'hidden',
@@ -60,9 +63,9 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
-  resultContiner: {
+  resultContainer: {
     marginHorizontal: 30,
     marginVertical: Dimensions.get('window').height / 60
   },
