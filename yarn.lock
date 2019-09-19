@@ -4186,6 +4186,11 @@ react-native-gesture-handler@~1.3.0:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-platform-touchable@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
+  integrity sha1-/eSsxl7qWF0osWTQw3FqQhKaaOQ=
+
 react-native-reanimated@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.1.0.tgz#ba6864055ec3a206cdd5209a293fe653ce276206"
@@ -4287,6 +4292,13 @@ react-native-web@^0.11.4:
     ws "^1.1.5"
     xmldoc "^0.4.0"
     yargs "^9.0.0"
+
+react-navigation-header-buttons@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-navigation-header-buttons/-/react-navigation-header-buttons-3.0.2.tgz#f9ca750a15b4aad0fcf7ad5013b78b2ca0c7d14c"
+  integrity sha512-dzcJnr5uH76Ym8NhIM39zBxrXPgyJ7MLRRt/D5cuubE5w6uYZ5Hsep/QD7AiFlIV1cJrY3iCU0PXyjx33ZhoGA==
+  dependencies:
+    react-native-platform-touchable "^1.1.1"
 
 react-navigation-stack@^1.7.3:
   version "1.7.3"
