@@ -9,8 +9,8 @@ import {
 } from 'react-native';
 import { Item, HeaderButtons } from 'react-navigation-header-buttons';
 
-import { CATEGORIES } from '../data/dummy-data';
 import HeaderButton from '../components/HeaderButton';
+import { CATEGORIES } from '../data/dummy-data';
 import CategoryGridTile from '../components/CategoryGridTile';
 
 const CategoriesScreen = props => {
