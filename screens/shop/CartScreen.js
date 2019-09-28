@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Colors from '../../constants/Colors';
 import CartItem from '../../components/shop/CartItem';
 import * as cartActions from '../../store/actions/cart';
+import * as ordersActions from '../../store/actions/order';
 
 const CartScreen = props => {
   const cartTotalAmount = useSelector(state => state.cart.totalAmount);
@@ -13,7 +14,7 @@ const CartScreen = props => {
     for (const key in state.cart.items) {
       transformCartItems.push({
         productId: key,
-        productTitle: state.cart.items[key].productTitlem,
+        productTitle: state.cart.items[key].productTitle,
         productPrice: state.cart.items[key].productPrice,
         quantity: state.cart.items[key].quantity,
         sum: state.cart.items[key].sum
@@ -37,6 +38,9 @@ const CartScreen = props => {
           color={Colors.accent}
           title='Order Now'
           disabled={cartItems.length === 0}
+          onPress={() => {
+            dispatch(ordersActions.addOrder(cartItems, cartTotalAmount))
+          }}
         />
       </View>
       <FlatList 
