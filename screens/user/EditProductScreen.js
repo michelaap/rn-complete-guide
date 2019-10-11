@@ -39,6 +39,7 @@ const EditProductScreen = props => {
         productsActions.createProduct(title, description, imageUrl, +price)
       );
     }
+    props.navigation.goBack();
   }, [dispatch, prodId, title, description, imageUrl, price]);
 
   useEffect(() => {
@@ -54,6 +55,10 @@ const EditProductScreen = props => {
             style={styles.input}
             value={title}
             onChangeText={text => setTitle(text)}
+            keyboardType='default'
+            autoCapitalize='sentences'
+            autoCorrect={false}
+            returnKeyType='next'
           />
         </View>
         <View style={styles.formControl}>
@@ -71,6 +76,7 @@ const EditProductScreen = props => {
               style={styles.input}
               value={price}
               onChangeText={text => setPrice(text)}
+              keyboardType='decimal-pad'
             />
           </View>
         )}
