@@ -2,11 +2,10 @@ import React, { useEffect, useCallback, useReducer } from 'react';
 import {
   View,
   ScrollView,
-  Text,
-  TextInput,
   StyleSheet,
   Platform,
-  Alert
+  Alert,
+  KeyboardAvoidingView
 } from 'react-native';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { useSelector, useDispatch } from 'react-redux';
@@ -23,17 +22,17 @@ const formReducer = (state, action) => {
       ...state.inputValues,
       [action.input]: action.value
     }
-    const updatedValidaties = {
+    const updatedValidities = {
       ...state.inputValidaties,
       [action.input]: action.isValid
     }
     let updatedFormIsValid = true;
-    for (const key in updatedValidaties) {
-      updatedFormIsValid = updatedFormIsValid && updatedValidaties[key];
+    for (const key in updatedValidities) {
+      updatedFormIsValid = updatedFormIsValid && updatedValidities[key];
     }
     return {
       formIsValid: updatedFormIsValid,
-      inputValidaties: updatedValidaties,
+      inputValidaties: updatedValidities,
       inputValues: updatedValues
     }
   }
@@ -54,7 +53,7 @@ const EditProductScreen = props => {
       description: editedProduct ? editedProduct.description : '',
       price: ''
     },
-    inputValidaties: {
+    inputValidities: {
       title: editedProduct ? true : false,
       imageUrl: editedProduct ? true : false,
       description: editedProduct ? true : false,
@@ -65,7 +64,7 @@ const EditProductScreen = props => {
 
   const submitHandler = useCallback(() => {
 
-    if (!formState.inputValues) {
+    if (!formState.formIsValid) {
       Alert.alert('Wrong input!', 'Please check the error in the form.', [
         { text: 'Ok' }
       ])
@@ -98,61 +97,67 @@ const EditProductScreen = props => {
   }, [dispatchFormState])
 
   return (
-    <ScrollView>
-      <View style={styles.form}>
-        <Input
-          id='title'
-          label='Title'
-          errorText='Please enter a valid title!'
-          keyboardType='default'
-          autoCapitalize='sentences'
-          autoCorrect
-          returnKeyType='next'
-          onInputChange={inputChangeHandler}
-          initialValue={editedProduct ? editedProduct.title : ''}
-          initiallyValid={!!editedProduct}
-          required
-        />
-        <Input 
-          id='imageUrl'
-          label='Image Url'
-          errorText='Please enter a valid image url!'
-          keyboardType='default'
-          returnKeyType='next'
-          onInputChange={inputChangeHandler}
-          initialValue={editedProduct ? editedProduct.title : ''}
-          initiallyValid={!!editedProduct}
-          required
-        />
-        {editedProduct ? null : (
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior='padding'
+      keyboardVerticalOffset={100}
+    >
+      <ScrollView>
+        <View style={styles.form}>
           <Input
-            id='price'
-            label='Price'
-            errorText='Please enter a valid price!'
-            keyboardType='decimal-pad'
+            id='title'
+            label='Title'
+            errorText='Please enter a valid title!'
+            keyboardType='default'
+            autoCapitalize='sentences'
+            autoCorrect
             returnKeyType='next'
             onInputChange={inputChangeHandler}
+            initialValue={editedProduct ? editedProduct.title : ''}
+            initiallyValid={!!editedProduct}
             required
-            min={0.1}
           />
-        )}
-        <Input
-          id='description'
-          label='Description'
-          errorText='Please enter a valid description!'
-          keyboardType='default'
-          autoCapitalize='sentences'
-          autoCorrect
-          multiline
-          numberOfLines={3}
-          onInputChange={inputChangeHandler}
-          initialValue={editedProduct ? editedProduct.title : ''}
-          initiallyValid={!!editedProduct}
-          required
-          minLength={5}
-        />
-      </View>
-    </ScrollView>
+          <Input 
+            id='imageUrl'
+            label='Image Url'
+            errorText='Please enter a valid image url!'
+            keyboardType='default'
+            returnKeyType='next'
+            onInputChange={inputChangeHandler}
+            initialValue={editedProduct ? editedProduct.title : ''}
+            initiallyValid={!!editedProduct}
+            required
+          />
+          {editedProduct ? null : (
+            <Input
+              id='price'
+              label='Price'
+              errorText='Please enter a valid price!'
+              keyboardType='decimal-pad'
+              returnKeyType='next'
+              onInputChange={inputChangeHandler}
+              required
+              min={0.1}
+            />
+          )}
+          <Input
+            id='description'
+            label='Description'
+            errorText='Please enter a valid description!'
+            keyboardType='default'
+            autoCapitalize='sentences'
+            autoCorrect
+            multiline
+            numberOfLines={3}
+            onInputChange={inputChangeHandler}
+            initialValue={editedProduct ? editedProduct.title : ''}
+            initiallyValid={!!editedProduct}
+            required
+            minLength={5}
+          />
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
