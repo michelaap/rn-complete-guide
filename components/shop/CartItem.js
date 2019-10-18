@@ -1,7 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Platform
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import {  } from '@unimodules/core';
 
 const CartItem = props => {
   return (
@@ -18,9 +23,9 @@ const CartItem = props => {
             style={styles.deleteButton}
           >
             <Ionicons
-              name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'} 
+              name={Platform.OS === 'android' ? 'md-trash' : 'ios-trash'}
               size={23}
-              color='red'
+              color="red"
             />
           </TouchableOpacity>
         )}

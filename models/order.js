@@ -1,22 +1,21 @@
 import moment from 'moment';
-import 'moment/locale/pt-br';
 
 class Order {
-  constructor(id, items, totalAmount, date){
+  constructor(id, items, totalAmount, date) {
     this.id = id;
-    this.items = items,
-    this.totalAmount = totalAmount,
-    this.date = date
+    this.items = items;
+    this.totalAmount = totalAmount;
+    this.date = date;
   }
 
   get readableDate() {
-    // return this.date.toLocaleDateString('pt-BR', {
-    //     year: 'numeric',
-    //     month: 'long',
-    //     day: 'numeric',
-    //     hour: '2-digit',
-    //     minute: '2-digit'
-    // });
+    //   return this.date.toLocaleDateString('en-EN', {
+    //       year: 'numeric',
+    //       month: 'long',
+    //       day: 'numeric',
+    //       hour: '2-digit',
+    //       minute: '2-digit'
+    //   });
     return moment(this.date).format('MMMM Do YYYY, hh:mm');
   }
 }
