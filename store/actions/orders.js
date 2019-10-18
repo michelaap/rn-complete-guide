@@ -38,7 +38,7 @@ export const addOrder = (cartItems, totalAmount) => {
   return async dispatch => {
     const date = new Date();
     const response = await fetch(
-      'https://rn-complete-guide.firebaseio.com/orders/u1.json',
+      'https://rn-complete-guide-4b921.firebaseio.com/orders/u1.json',
       {
         method: 'POST',
         headers: {

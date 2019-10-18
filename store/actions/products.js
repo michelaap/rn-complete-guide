@@ -44,7 +44,7 @@ export const fetchProducts = () => {
 export const deleteProduct = productId => {
   return async dispatch => {
     const response = await fetch(
-      `https://rn-complete-guide.firebaseio.com/products/${productId}.json`,
+      `https://rn-complete-guide-4b921.firebaseio.com/products/${productId}.json`,
       {
         method: 'DELETE'
       }
@@ -61,7 +61,7 @@ export const createProduct = (title, description, imageUrl, price) => {
   return async dispatch => {
     // any async code you want!
     const response = await fetch(
-      'https://rn-complete-guide.firebaseio.com/products.json',
+      'https://rn-complete-guide-4b921.firebaseio.com/products.json',
       {
         method: 'POST',
         headers: {
@@ -94,7 +94,7 @@ export const createProduct = (title, description, imageUrl, price) => {
 export const updateProduct = (id, title, description, imageUrl) => {
   return async dispatch => {
     const response = await fetch(
-      `https://rn-complete-guide.firebaseio.com/products/${id}.json`,
+      `https://rn-complete-guide-4b921.firebaseio.com/products/${id}.json`,
       {
         method: 'PATCH',
         headers: {
